@@ -1,0 +1,16 @@
+{
+  "name": "json-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "monaco-editor": "^0.34.0",
+    "requirejs": "^2.3.6"
+  }
+}
