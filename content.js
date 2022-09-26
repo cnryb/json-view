@@ -1,12 +1,10 @@
 (function () {
-  if (document.getElementsByTagName('pre')[0]) {
-
-
+  // At least in chrome, the JSON is wrapped in a pre tag.
+  const ele = document.getElementsByTagName('pre')[0];
+  if (ele) {
+    const content = ele.innerText;
+    if (!simplVerifyJSON(content)) return;
     try {
-      // At least in chrome, the JSON is wrapped in a pre tag.
-      const content = document.getElementsByTagName('pre')[0].innerText;
-      if(content[0] !== '{' || content[content.length - 1] !== '}') return;
-      
       const json = JSON.parse(content);
       const jsonStr = JSON.stringify(json, null, 2);
       listenMessage(jsonStr)
@@ -57,6 +55,14 @@
     }
     catch (e) {
     }
+  }
+
+  function simplVerifyJSON(content) {
+    if (content[0] !== '{' && content[0] !== '[') return false
+    if (content[0] === '{' && content[content.length - 1] !== '}') return false
+    if (content[0] === '[' && content[content.length - 1] !== ']') return false
+
+    return true
   }
 
 })()
