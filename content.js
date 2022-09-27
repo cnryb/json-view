@@ -1,7 +1,8 @@
 (function () {
-  // At least in chrome, the JSON is wrapped in a pre tag.
-  const ele = document.getElementsByTagName('pre')[0];
+  const ele = document.body.firstChild;
   if (ele) {
+    // At least in chrome, the JSON is wrapped in a pre tag.
+    if (ele.tagName !== "PRE") return;
     const content = ele.innerText;
     if (!simplVerifyJSON(content)) return;
     try {
