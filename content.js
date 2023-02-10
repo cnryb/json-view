@@ -2,12 +2,17 @@
   const ele = document.body.firstChild;
   if (ele) {
     // At least in chrome, the JSON is wrapped in a pre tag.
-    if (ele.tagName !== "PRE") return;
+    if (ele.nodeName !== "PRE") return;
     const content = ele.innerText;
-    if (!simplVerifyJSON(content)) return;
+    let jsonStr = '';
     try {
       const json = JSON.parse(content);
-      const jsonStr = JSON.stringify(json, null, 2);
+      jsonStr = JSON.stringify(json, null, 2);
+    } catch (error) {
+      return;
+    }
+
+    try {
       listenMessage(jsonStr)
 
       const iframe = document.createElement("iframe");
