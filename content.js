@@ -13,22 +13,23 @@
     }
 
     try {
-      listenMessage(jsonStr)
-
+      // document.body.firstChild.style.display = "none";
       const iframe = document.createElement("iframe");
       iframe.setAttribute("src", chrome.runtime.getURL("./index.html"));
-      iframe.setAttribute("style", "border: 0px none; width: 100%; height: 100%; display: block;");
+      iframe.setAttribute("style", "border: 0px none; width: 100%; height: 100%; display: none;");
 
       document.documentElement.style.height = "100%";
       document.body.style.margin = "0px";
       document.body.style.height = "100%";
       document.body.insertBefore(iframe, document.body.firstChild);
 
+      listenMessage(jsonStr)
+
       function listenMessage(jsonStr) {
         window.addEventListener("message", function (message) {
           // Wait for editor frame to signal that it has loaded.
           if (message.data === "editor-loaded") {
-            // element.parentNode.removeChild(element);
+            iframe.style.display = "block";
             const response = {
               code: jsonStr,
               filename: getFilename(),

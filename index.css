@@ -5,3 +5,10 @@ body {
 #container {
   height: 100vh;
 }
+
+@media (prefers-color-scheme: dark) {
+  body, html {
+    background-color: rgb(30, 30, 30);
+  }
+}
+
