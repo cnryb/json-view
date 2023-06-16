@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "monaco-editor": "^0.35.0",
+    "monaco-editor": "^0.39.0",
     "requirejs": "^2.3.6"
   }
 }
